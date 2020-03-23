@@ -1,28 +1,31 @@
 # Excessive Cash Losing Investors Billions: A Research to Show the Numbers
 
+![](./images/cash.gif)
+
 ### Problem Statement 
 
-Cash, as an asset class, is widely recognized in the investment community as the worst asset to hold in a portfolio or balance sheet. Companies and portfolio managers hold cash mainly because it provides liquidity and a means for crisis management. However, since cash is a non-operating asset and subject to inflation, it is extremely unreasonable for publicly-traded companies to hold more cash on their balance sheet rather than giving it back to investors, who could in turn find other potential investments to generate returns. Corporate managers tendency to keep more-than-needed cash in hand, rather than paying it out as dividend, is one of biggest value-sucker in public equity today. 
+Every company has investments in cash and cash equivalents (short-term bonds, commercial papers, etc.). Holding enough cash in a company’s balance sheet is crucial for a company’s day-to-day operations, investments and crisis response capabilities.
 
-In this project, we aim to find the companies with the most excessive cash on their balance sheet and the impact of this cash to investors. We will look at three questions:
+However, there is dark side to this. Many investors draw a distinction between operating cash and excessive cash. Operating cash is considered essentially to a company’s operation and overall well-being. Excessive cash on the other hand, is the portion of cash that is idle or earning below market interest rate (risk free rate). Instead of returning these excessive cash to its investors so they could be invested in other opportunities, many companies hold back, thereby creating waste and destroying value for its shareholders.
 
-1. Where and how can we effectively collect market data? Can we build an efficient tool to get the data? 
-2. Which companies in the S&P 500 has the most excessive cash in their balance sheet and how much?
-3. What's the estimated value loss for investors as a result of these excessive cash holding? (If they were to get this cash as dividend and reinvest them back to capital market, what would the estimated return be)
-4. What are the limitations we are facing and how can we scale this project to better model the numbers and drive more insightful recommendations.
+This project is aimed at leveraging regression models to determine the “fair cash balance” a company should hold based on a number of characteristics (sector, ROE, assets, etc.). We are exploring the following questions:
+
+1. What are the biggest contributing factors to the cash balance?
+2. Which industries have the most cash relative to their asset? What are the possible reasons behind this phenomenon?
+3. Which companies hold the most excessive cash in absolute terms?
+4. Which companies hold the most excessive cash in relative terms?
+5. How many companies hold cash values way above their normal band fair cash balance? (>50% over its fair cash value)
 
 
 **Author**
 
 [David Li](https://www.linkedin.com/in/davidgnli/)
 
-This project was completed in cooperation with [General Assembly](https://generalassemb.ly) in October 2019.
-
 ---
 
 ### Data Sources
 1. [Yahoo Finance](https://finance.yahoo.com/): One of the best sources for public market data.
-2. [Data Hub](https://datahub.io/core/s-and-p-500-companies-financials#data-cli): This is where we get a very clean csv file for the S&P 500 stocks and their sectors.
+2. [Data Hub](https://datahub.io/core/s-and-p-500-companies-financials#data-cli): Clean csv file for S&P 500 components.
 
 ---
 
@@ -30,21 +33,34 @@ This project was completed in cooperation with [General Assembly](https://genera
 
 Here is the workflow order to follow when running through the notebooks, which can be found in the [code folder](./code):
 
-- [GA Capstone Jupyter Notebook Code](./code/)
-- [GA Capstone Presentation](./slides/)
+- [Data Collection From Yahoo Finance Jupyter Notebook](./code/)
+- [Data Cleaning, EDA, Modeling and Analysis Jupyter Notebook](./code/)
 
 ---
 
 ### Executive Summary
 
-The evaluation of cash has been traditionally viewed as a seemingly easy task. Analysts usually just place cash on face value and add it back to the valuation of the company. In my opinion, this method is not only biased but flawed. Should cash be considered equally valuable in the hands of Alphabet, a high growth and highly profitable company, and GE, a great company with very limited growth and upside left in it? The answer is pretty obvious in my opinion. I believe tons of value can be extracted if corporate managers simply return these extra cash back to investors through either stock buyback or dividend.
+This report represents my analysis of the “fair cash balance” for each company in the S&P 500 index, which tracks 500 established American companies that represents the health of the US equity market. Using Beautiful Soup, we collected annual financial statement data from Yahoo Finance in November 2019 to provide the basis for the analysis. Here are some of the conclusions I found:
 
-First, we created a set of tools that allow us to directly scrape data from the internet. We collected cash balances, among other financial statistics and financial statements for 474 companies tracked by the S&P 500 to look at which companies and which industries hold the most excessive cash and what the damage had been for investors in terms of value. The key data to collect is the cash balance, financial statements, growth rate and market statistics such as retention rate, dividend rate. We will setup metrics to determine the value differences between a company that holds too much cash versus similar companies who give cash back to investors. 
+1. Data collected: We collected data from Yahoo Finance instead of the source for each company. We are trusting Yahoo Finance to get it right and use their data to do our analysis. After cross-validating a few data points, Yahoo Finance seems to get their data right.
+2. Financial services companies hold the most amount of cash: I quickly find that financial services companies (as shown below), especially banks and asset managers, hold the most excessive cash. Since these companies provide liquidity for the entire market to keep it running, the excessive cash is a part of their business model. In addition, because of strengthening regulations after the financial crisis, banks and financial services companies are required to hold more cash than they would optimally do.
+3. Technology and health care companies are most likely to hold excessive cash: As the graph shows below, other than banks, technology and health care companies have the most excessive cash. This is because a lot of these companies don’t have much of a bottom line to speak of and they have to reinvest in their business a lot to grow and to survive. The flexibility of a large cash balance gives them the ability to invest in their business without having to constantly raise new capital.
+4. 155 companies in the S&P 500 hold too much cash: We’ve already talked about how companies destroy value by holding too much cash. Investors in these companies should really pressure the management and make sure there is a good story of why they are holding this much cash.
 
-Second, we cleaned up the data as there were a lot of null values. We had to deduce it by certain factors. This raw data is extremely valuable in the sense that it allows us to see the how cash is used and reserved across different industries. We were able to derive a number of interesting visualizations from this process.
+---
+### Data Collection (Yahoo Finance)
+All data used in this report are scarped from Yahoo Finance. Yahoo Finance assigns unique link to each stock based on the stock ticker. I created flexible functions that scrapes all the most important financial statement data and market stats for each company tracked by the S&P 500. 
 
-Lastly, the modeling process is fairly straight forward. There are much room for improvement to adjust the data and perform additional feature engineering. But we chose a very simply linear regression model to project the "fair cash balance" for each of the 474 companies. We derived some very interesting results.
+You can view the detailed data collection process from here: 
 
+- [Data Collection From Yahoo Finance Jupyter Notebook](./code/)
+
+---
+### Dataset
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | `renders` | **nicely**
+1 | 2 | 3
 
 ---
 
