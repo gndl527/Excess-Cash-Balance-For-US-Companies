@@ -77,7 +77,7 @@ You can view the detailed data collection process from here:
 --- | ---
 `spx_df.csv` | This dataset contains financial statements for 474 companies tracked by the S&P 500 index in November 2019, including balance sheet, income statement and cash flow statement reported by each company for the past 4 years. 
 `spx_stats.csv` | This dataset contains the market statistics for 474 companies tracked by the S&P 500 index in November 2019. Examples include 52-week Low, PE ratios, beta, average trading volume, etc. 
-'constituents.csv` | This dataset contains all 500 companies in S&P 500 (fall name, stock ticker and sector). We use this dataset to initiate the data collection and attach the sector for each company scraped from Yahoo Finance.
+`constituents.csv` | This dataset contains all 500 companies in S&P 500 (fall name, stock ticker and sector). We use this dataset to initiate the data collection and attach the sector for each company scraped from Yahoo Finance.
 
 ---
 ### Modeling
